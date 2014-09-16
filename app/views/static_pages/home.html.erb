@@ -1,0 +1,25 @@
+	<div class="home-search">
+			<div class="home-search-screen">
+				<div class="home-logo-main">
+					<%= image_tag('home/home-logo-main.png') %>
+				</div>
+
+					<div class="home-search-form">
+						<div class="home-control-group">
+							<%= form_tag users_path, :method => :get do %>
+							    <%= text_field_tag :search, params[:search], class: "home-search-field" %>
+							    <%= submit_tag "Search", :name => nil, class: "home-btn " %>
+							<% end %>
+						</div>
+					</div>
+			</div>
+	</div>
+
+<footer>
+	<ul>
+		<li class="footer-links"><%= link_to 'Contact Us', contact_path %></li>
+		<li class="footer-links"><%= link_to 'Help', help_path %></li>
+		<li class="footer-links"><%= link_to 'Terms of Service', terms_path, target: "_blank" %></li>
+		<li>Copyright &#0169; 2014</li>		
+	</ul>
+</footer>

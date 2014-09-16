@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Viewbly</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body class="home-body">
+  <div id="nav">
+    <a href="#nav" title="Show navigation">Show navigation</a> <a href="#" title="Hide navigation">Hide navigation</a>
+    <ul class="clearfix">   
+      <% if logged_in? %>
+          <li><%= active_link_to "Snapshot", snapshot_path %></li>
+          <li><%= active_link_to "Views", views_path %></li>
+          <li><%= active_link_to current_user.full_name, current_user.username, :active => [[], ['show']] %></li>
+          <li><%= active_link_to "Log Out", logout_path, method: :delete %></li>
+      <% else %>
+          <%= form_tag user_sessions_path do %>
+          <li><%= active_link_to "Join!", new_user_path, class: "home-btn" %></li>
+            <li><a href="/login" class="home-btn">Login</a>  
+            <ul>
+                                <li class="drop-down"><%= label_tag :username, "Username" %>
+                                <%= text_field_tag :username, params[:username] %></li>
+                                <li class="drop-down"><%= label_tag :password, "Password" %>
+                                <%= password_field_tag :password %></li>
+                            <li class="drop-down"><%= submit_tag "Log In", class: "home-btn" %></li>
+                            <li class="drop-down"><%= check_box_tag :remember_me %>
+                            <%= label_tag :remember_me, "Keep me signed in?" %></li> 
+                            <li class="drop-down"><%= link_to "Forgot?", new_password_reset_path %></li>
+                          </ul></li>
+            
+      <% end %>
+       <% end %>
+    </ul>
+  </div>
+<div class="content">
+  <% flash.each do |type, message| %>
+  <div class="alert flash <%= type %>">
+    <%= message %>
+  </div>
+  <% end %>
+
+<%= yield %>
+</div>
+</body>
+</html>

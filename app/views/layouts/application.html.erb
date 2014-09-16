@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Viewbly</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class='nav'>
+    <ul>
+      <% if logged_in? %>
+         
+          <li><%= active_link_to "Snapshot", snapshot_path %></li>
+          <li><%= active_link_to "Views", views_path %></li>
+          <li id="nav-logo"><%= link_to image_tag('nav/logo-nav-aqua.png'), root_path %></li>
+          <li><%= active_link_to current_user.full_name, current_user.username, :active => [[], ['show']] %></li>
+          <li><%= active_link_to "Log Out", logout_path, method: :delete %></li>
+          <%= form_tag users_path, :method => :get do %>
+                  <%= text_field_tag :search, params[:search], :placeholder => "Search...", class: "nav-search-field" %>
+              <% end %>
+      <% else %>
+          <li><%= active_link_to "Log In", new_user_session_path %></li>
+          <li id="nav-logo"><%= link_to image_tag('nav/logo-nav-aqua.png'), root_path %></li>
+          <li><%= active_link_to "Sign Up", new_user_path %></li>
+      <% end %>
+    </ul>
+  </div>
+<div class="content">
+  <% flash.each do |type, message| %>
+  <div class="alert flash <%= type %>">
+    <%= message %>
+  </div>
+  <% end %>
+
+<%= yield %>
+</div>
+</body>
+</html>

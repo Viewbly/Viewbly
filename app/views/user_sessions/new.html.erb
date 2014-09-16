@@ -1,0 +1,35 @@
+<%= form_tag user_sessions_path do %>
+
+
+<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<h1>Login</h1>
+			</div>
+
+					<div class="login-form">
+						<div class="control-group">
+						<%= label_tag :username, "Username" %>
+						<%= text_field_tag :username, params[:username], class: "username-field" %>
+						<br />
+					</div>
+
+					<div class="control-group">
+						<%= label_tag :password, "Password" %>
+						<%= password_field_tag :password %>
+						<br />
+					</div>
+
+					<div class="checkbox">	
+						<%= check_box_tag :remember_me, class: "checkbox-field" %>
+						<%= label_tag :remember_me, "Keep me signed in?", class: "checkbox-tag" %>						
+					</div>
+
+
+						<%= submit_tag "Log In", class: "btn" %>
+						<%= link_to "Forgot Password", new_password_reset_path, class: "login-link" %>
+						<% end %>
+
+						</div>
+	    </div>
+</div>

@@ -1,0 +1,192 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@font-face {
+    font-family: 'Delicious';
+    src: url(font-path('delicious-roman-webfont.eot') + "?#iefix") format('embedded-opentype'),
+         url(font-path('delicious-roman-webfont.woff')) format('woff'), 
+         url(font-path('delicious-roman-webfont.ttf'))  format('truetype'),
+         url(font-path('delicious-roman-webfont.svg') + "#MyFont") format('svg');
+}
+
+body {
+  font-family: 'Delicious';
+  background: #EDEDED;
+}
+
+.content {
+  margin-top: 75px;
+}
+
+/* Navigation */
+
+.nav {
+  width: 100%;
+  height: 60px; 
+  position: fixed; 
+  top: 0;
+  background: white;
+  opacity: 0.97;
+  border-bottom: 1px solid #1ABC9C;
+}
+
+.nav ul {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+.nav ul li {
+  padding-top: 15px;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.nav ul li a {
+  color: #1ABC9C;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.nav ul li a:hover {
+  color: #34495E;
+  background: none;
+  border-bottom: 3px solid #1ABC9C;
+  padding-bottom: 18px;
+}
+
+#nav-logo img {
+  max-width: 25px;
+  height: auto;
+}
+
+#nav-logo a:hover {
+  border-bottom: none;
+}
+
+.nav-search-field {
+  float: right;
+  position: relative;
+  top: -36px;
+  margin-right: 10px;
+  border: 3px solid #e0e0e0;
+}
+
+.active {
+  color: #34495E;
+  background: none;
+  border-bottom: 3px solid #1ABC9C;
+  padding-bottom: 18px;
+}
+
+* {
+box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+.login {
+margin: auto;
+margin-top: 10%;
+width: 300px;
+}
+.login-screen {
+background-color: #FFF;
+padding: 20px;
+border-radius: 5px
+}
+
+.app-title {
+text-align: center;
+color: #777;
+}
+
+.login-form {
+text-align: center;
+}
+.control-group {
+margin-bottom: 10px;
+}
+
+.checkbox {
+  margin-bottom: 12px;
+}
+
+.checkbox-tag {
+  margin-left: -210px;
+}
+
+.checkbox-tag a:hover {
+  background: none;
+  color: #16A085;
+}
+
+input {
+text-align: center;
+background-color: #ECF0F1;
+border: 2px solid transparent;
+border-radius: 3px;
+font-size: 16px;
+font-weight: 200;
+padding: 10px 0;
+width: 250px;
+transition: border .5s;
+}
+
+input:focus {
+border: 2px solid #16A085;
+box-shadow: none;
+}
+
+.btn {
+  border: 2px solid transparent;
+  background: #1ABC9C;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  box-shadow: none;
+  transition: 0.25s;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.btn:hover {
+  background-color: #16A085;
+}
+
+.login-link {
+  font-size: 12px;
+  color: #1ABC9C;
+  display: block;
+  margin-top: 12px;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  background: none;
+  color: #16A085;
+}
+
+

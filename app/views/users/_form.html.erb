@@ -1,0 +1,59 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="login">
+    <div class="login-screen">
+      <div class="app-title">
+        <h1>Register</h1>
+      </div>
+
+                 <div class="login-form">
+                  
+                  <div class="control-group">
+                    <%= f.label :full_name, "Full Name", class: "full-name-field" %><br>
+                    <%= f.text_field :full_name %>
+                  </div>
+                  
+                  <div class="control-group">
+                    <%= f.label :email, "Email" %><br>
+                    <%= f.text_field :email %>
+                  </div>
+                  
+                  <div class="control-group">
+                    <%= f.label :password, "Password" %><br>
+                    <%= f.password_field :password %>
+                  </div>
+                  
+                  <div class="control-group">
+                    <%= f.label :username, "Username" %><br>
+                    <%= f.text_field :username %>
+                  </div>
+
+                  <div class="checkbox">
+                  <%= check_box_tag :remember_me, class: "checkbox-field" %>
+                  <%= label_tag :remember_me, "Keep me signed in?", class: "checkbox-tag" %>  
+                  </div>
+                  
+                  <div class="checkbox">
+                  <%= f.check_box :terms_of_service, class: "checkbox-field" %>
+                  <%= f.label :terms_of_service, "I agree to the #{link_to 'Terms of Service', terms_path, target: "_blank"}.".html_safe, class: "checkbox-tag" %>
+                  </div>
+                  
+                    <%= f.submit "Join!", class: "btn btn-primary btn-large btn-block" %>
+                  
+                  </div>
+    </div>
+  </div>
+
+<% end %>

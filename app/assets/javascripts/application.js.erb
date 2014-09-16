@@ -1,0 +1,155 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require_tree .
+
+
+/////////////////////////* Floats in search field on main page *////////////////////////
+
+$(document).on('page:update', function(){
+$('.home-search')
+  .css('opacity', 0)
+  .slideToggle('fast')
+  .animate(
+    { opacity: 1 },
+    { queue: false, duration: 'slow' }
+  );
+});
+
+
+//////////////////Focus search field on page load//////////////////////
+$(document).on('page:update', function() {
+    $('.searchfield').focus();
+    $('.username-field').focus();
+    $('.full-name-field').focus();
+    $('.home-search-field').focus();
+});
+
+
+
+
+//////////////////Changes the color scheme of the site on page load//////////////////////
+$(document).on('page:load', function() {
+//Choose a random color
+RandomColor = function() {
+    colors = ['aqua', 'green', 'blue', 'purple', 'red', 'dark_blue', 'orange']
+    return colors[Math.floor(Math.random()*colors.length)];
+}
+
+RandomColor();
+
+//After random color is chosen, these styles are applied
+  function pagecolor (color, lightcolor, logo) {
+    //Changes border color on buttons
+    $(".home-body").css("background", color);
+    //Changes background color on buttons
+    $(".home-btn").css("background", lightcolor);
+    //Changes border bottom color on nav
+    $("#nav").css("border-bottom-color", lightcolor);
+    //Changes focus color on search field
+    $(".home-search-field:focus").css("border-color", color);   
+    //Changes hover color on search submit button
+    $(".home-btn").hover(function() {
+      $(this).css("background", color);
+        }, function() {
+      $(this).css("background", lightcolor);});
+      //Changes hover color on footer links
+    $(".footer-links a").hover(function() {
+      $(this).css("color", color);
+      $(this).css("background", 'white');
+        }, function() {
+      $(this).css("color", 'white');
+      $(this).css("background", 'none');});
+  }
+
+
+
+//The specific colors and logo that are applied for each color style
+   if (RandomColor()=='aqua') {
+pagecolor("#16A085", "#1ABC9C", "logo-nav-aqua.png");
+ }
+
+else if (RandomColor()=='blue') {
+pagecolor("#2980B9", "#3498DB", "logo-nav-blue.png");
+ }
+
+else if (RandomColor()=='purple') {
+pagecolor("#8E44AD", "#9B59B6", "logo-nav-purple.png");
+ }
+
+else if (RandomColor()=='red') {
+pagecolor("#C0392B", "#E74C3C", "logo-nav-red.png");
+ }
+
+else {
+pagecolor("#F39C12", "#F1C40F", "logo-nav-orange.png");
+ }
+});
+
+
+
+// Login Form
+
+/*
+  By Osvaldas Valutis, www.osvaldas.info
+  Available for use under the MIT License
+*/
+
+
+
+;(function( $, window, document, undefined )
+{
+  $.fn.doubleTapToGo = function( params )
+  {
+    if( !( 'ontouchstart' in window ) &&
+      !navigator.msMaxTouchPoints &&
+      !navigator.userAgent.toLowerCase().match( /windows phone os 7/i ) ) return false;
+
+    this.each( function()
+    {
+      var curItem = false;
+
+      $( this ).on( 'click', function( e )
+      {
+        var item = $( this );
+        if( item[ 0 ] != curItem[ 0 ] )
+        {
+          e.preventDefault();
+          curItem = item;
+        }
+      });
+
+      $( document ).on( 'click touchstart MSPointerDown', function( e )
+      {
+        var resetItem = true,
+          parents   = $( e.target ).parents();
+
+        for( var i = 0; i < parents.length; i++ )
+          if( parents[ i ] == curItem[ 0 ] )
+            resetItem = false;
+
+        if( resetItem )
+          curItem = false;
+      });
+    });
+    return this;
+  };
+})( jQuery, window, document );
+
+
+$( function()
+{
+$( '.home-nav li:has(ul)' ).doubleTapToGo();
+});

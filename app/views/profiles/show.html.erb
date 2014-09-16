@@ -1,0 +1,28 @@
+<h1><%= @user.full_name %></h1>
+
+<h2><%= link_to "Edit Profile", edit_user_path(@user) %></h2>
+
+<% if logged_in? %>
+    
+      <section>
+        <%= render 'users/stats' %>
+      </section>   
+      <section>
+      	<%= render 'views/views' %>
+      </section>
+      
+<% else %>
+<% end %>
+
+<% if @views %>
+<% @views.each do |view| %>
+<%= view.content %>
+<hr />
+<%= link_to time_ago_in_words(view.created_at), view_path(view) %> ago
+<%= link_to 'Destroy', view, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+<% end %>
+<% end %>
+
+
