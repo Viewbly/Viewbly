@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :following, :followers]
   before_action :admin_user, only: :destroy
 
   def index
@@ -61,6 +61,20 @@ if @user.update_attributes(user_params)
     flash[:success] = "User Deleted"
     redirect_to daily_path
     end
+
+     def following
+    @title = "Following"
+    @users = User.find(params[:id])
+    @users = User.all
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @users = User.find(params[:id])
+    @users = User.all
+    render 'show_follow'
+  end
   end
 
   private

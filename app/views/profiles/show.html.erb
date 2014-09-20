@@ -1,6 +1,13 @@
 <h1><%= @user.full_name %></h1>
 
-<h2><%= link_to "Edit Profile", edit_user_path(@user) %></h2>
+
+<section>
+	<%= render 'users/follow' %>
+</section>
+<section>
+	<%= render 'users/unfollow' %>
+</section>
+<h3><%= link_to "Edit Profile", edit_user_path(@user) %></h3>
 
 <% if logged_in? %>
     
